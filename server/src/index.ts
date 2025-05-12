@@ -25,7 +25,12 @@ wss.on("connection", (socket : WebSocket) => {
            }
 
            if(parsedMessage.type === "chat"){
+
+               console.log(message.toString());
+
                const talkingUser = allSockets.find(user => user.ownId === parsedMessage.payload.talkToId);
+
+               console.log("Talking to user: ", talkingUser);
 
                if(talkingUser){
                       talkingUser.socket.send(parsedMessage.payload.message);
